@@ -1,0 +1,69 @@
+/* MapPanel.css */
+
+.map-panel {
+  display: flex;
+  flex-direction: column;
+  background: var(--panel);
+  overflow: hidden;
+  position: relative;
+}
+
+.mp-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 14px;
+  background: rgba(0,0,0,0.5);
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+  z-index: 10;
+}
+
+.mp-title {
+  font-family: var(--font-display);
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: var(--cyan);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.mp-title-bar {
+  width: 3px; height: 12px;
+  background: var(--cyan);
+  box-shadow: 0 0 6px var(--cyan);
+}
+
+.mp-map {
+  flex: 1;
+  filter: saturate(0.5) brightness(0.75);
+}
+
+/* ── Controls ─────────────────────────────────────────────────── */
+.mp-controls {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.mc-btn {
+  background: rgba(9,15,20,0.92);
+  border: 1px solid var(--border-b);
+  color: var(--cyan);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: left;
+  white-space: nowrap;
+}
+.mc-btn:hover { background: var(--cyan-dark); border-color: var(--cyan); }
+.mc-btn.mc-active { background: var(--cyan-dark); border-color: var(--cyan); }
+.mc-btn.mc-danger { color: var(--red); border-color: rgba(255,59,59,0.3); }
+.mc-btn.mc-danger:hover { background: rgba(255,59,59,0.08); border-color: var(--red); }

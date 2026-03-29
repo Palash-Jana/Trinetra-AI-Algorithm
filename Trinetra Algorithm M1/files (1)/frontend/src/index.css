@@ -1,0 +1,128 @@
+/* ═══════════════════════════════════════════════════════════════
+   DRONEIQ Dashboard — Global Styles
+   Aesthetic: Military-grade dark tactical UI
+   ═══════════════════════════════════════════════════════════════ */
+
+:root {
+  --bg:          #050a0e;
+  --panel:       #090f14;
+  --panel2:      #0c1520;
+  --border:      rgba(0, 210, 255, 0.10);
+  --border-b:    rgba(0, 210, 255, 0.20);
+
+  --cyan:        #00d2ff;
+  --cyan-dim:    #006880;
+  --cyan-dark:   #001a22;
+  --cyan-glow:   rgba(0, 210, 255, 0.4);
+
+  --amber:       #ffaa00;
+  --amber-dim:   #664400;
+  --red:         #ff3b3b;
+  --red-dim:     #660000;
+  --green:       #00ff9d;
+  --green-dim:   #004d2e;
+  --purple:      #bb88ff;
+
+  --text:        #c0e8ff;
+  --text-dim:    #3a6070;
+  --text-mid:    #7ab0c8;
+
+  --font-mono:   'Share Tech Mono', monospace;
+  --font-display:'Orbitron', monospace;
+  --font-ui:     'Rajdhani', sans-serif;
+
+  --scan: rgba(0,210,255,0.025);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body, #root {
+  width: 100%; height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-mono);
+  overflow: hidden;
+}
+
+/* Scanline overlay */
+body::before {
+  content: '';
+  position: fixed; inset: 0; z-index: 9999;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent, transparent 2px,
+    var(--scan) 2px, var(--scan) 4px
+  );
+}
+
+/* Grid bg */
+body::after {
+  content: '';
+  position: fixed; inset: 0; z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(0,210,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,210,255,0.025) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+/* Scrollbars */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--cyan-dim); border-radius: 2px; }
+
+/* Leaflet map dark overrides */
+.leaflet-container { background: #050a0e !important; }
+.leaflet-tile {
+  filter: invert(1) hue-rotate(180deg) brightness(0.75)
+          saturate(0.4) contrast(1.15);
+}
+.leaflet-popup-content-wrapper {
+  background: var(--panel) !important;
+  border: 1px solid var(--cyan) !important;
+  border-radius: 3px !important;
+  box-shadow: 0 0 20px var(--cyan-glow) !important;
+  color: var(--text) !important;
+  font-family: var(--font-mono) !important;
+  font-size: 11px !important;
+}
+.leaflet-popup-tip { background: var(--panel) !important; }
+.leaflet-popup-close-button { color: var(--cyan) !important; }
+.leaflet-control-zoom a {
+  background: var(--panel) !important;
+  color: var(--cyan) !important;
+  border-color: var(--border-b) !important;
+}
+
+/* Recharts */
+.recharts-cartesian-grid-horizontal line,
+.recharts-cartesian-grid-vertical line {
+  stroke: rgba(0,210,255,0.08) !important;
+}
+.recharts-text { fill: var(--text-dim) !important; font-size: 9px !important; }
+
+/* Animations */
+@keyframes pulse-ring {
+  0%, 100% { box-shadow: 0 0 0 0 var(--cyan-glow); }
+  50%       { box-shadow: 0 0 0 8px rgba(0,210,255,0); }
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.15; }
+}
+@keyframes slide-in {
+  from { opacity: 0; transform: translateX(-12px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes val-flash {
+  0%   { text-shadow: 0 0 20px var(--cyan), 0 0 40px var(--cyan); }
+  100% { text-shadow: none; }
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}

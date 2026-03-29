@@ -1,0 +1,325 @@
+/* BottomBar.css — All bottom panel sections */
+
+/* ── Shared section styles ───────────────────────────────────── */
+.bb-section {
+  background: var(--panel2);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 10px 12px;
+  gap: 6px;
+}
+.bb-section:last-child { border-right: none; }
+
+.bb-title {
+  font-family: var(--font-display);
+  font-size: 8px;
+  letter-spacing: 3px;
+  color: var(--text-dim);
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  flex-shrink: 0;
+}
+.bb-title-bar {
+  width: 2.5px; height: 10px;
+  background: var(--cyan);
+}
+.bb-badge {
+  margin-left: auto;
+  font-family: var(--font-display);
+  font-size: 10px;
+  color: var(--green);
+  font-weight: 700;
+}
+.bb-divider {
+  font-size: 7px;
+  letter-spacing: 2px;
+  color: rgba(255,59,59,0.4);
+  border-top: 1px solid rgba(255,59,59,0.12);
+  padding-top: 5px;
+  margin-top: 2px;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   DETECTIONS LIST
+   ══════════════════════════════════════════════════════════════ */
+.det-section { flex: 1.8; }
+
+.det-groups {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  flex-shrink: 0;
+}
+
+.det-group-chip {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(0,0,0,0.3);
+  border: 1px solid var(--gc, #fff);
+  border-radius: 2px;
+  padding: 2px 7px;
+  font-size: 9px;
+  color: var(--gc, #fff);
+}
+.dgc-count {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 11px;
+}
+.dgc-label { letter-spacing: 1.5px; font-size: 8px; opacity: 0.7; }
+
+.det-empty {
+  font-size: 10px;
+  color: var(--text-dim);
+  letter-spacing: 1.5px;
+  padding: 4px 0;
+}
+
+.det-list {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.det-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 9px;
+  padding: 3px 0;
+  border-bottom: 1px solid rgba(0,210,255,0.04);
+  animation: slide-in 0.2s ease;
+}
+.det-row-target {
+  background: rgba(255,59,59,0.04);
+}
+.dr-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--dc, #fff);
+  flex-shrink: 0;
+}
+.dr-label { color: var(--text); flex: 1; font-size: 10px; }
+.dr-conf  { color: var(--text-dim); width: 30px; font-size: 8px; }
+.dr-gps   { color: var(--cyan-dim); font-size: 8px; width: 110px; }
+.dr-btn {
+  font-size: 8px;
+  letter-spacing: 1px;
+  padding: 2px 6px;
+  background: transparent;
+  border: 1px solid var(--cyan-dim);
+  color: var(--cyan);
+  cursor: pointer;
+  transition: all 0.15s;
+  font-family: var(--font-mono);
+  flex-shrink: 0;
+}
+.dr-btn:hover { background: var(--cyan-dark); border-color: var(--cyan); }
+.dr-btn-remove { border-color: var(--red-dim); color: var(--red); }
+.dr-btn-remove:hover { background: rgba(255,59,59,0.08); border-color: var(--red); }
+
+.tgt-list {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  overflow-y: auto;
+  max-height: 60px;
+}
+.tgt-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 9px;
+}
+.tgt-dot { color: var(--red); font-size: 11px; }
+.tgt-label { color: var(--red); flex: 1; }
+.tgt-gps { color: var(--text-dim); font-size: 8px; width: 110px; }
+
+
+/* ══════════════════════════════════════════════════════════════
+   TELEMETRY
+   ══════════════════════════════════════════════════════════════ */
+.telem-section { flex: 1.2; }
+
+.telem-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  flex: 1;
+}
+
+.telem-card {
+  background: rgba(0,0,0,0.4);
+  border: 1px solid rgba(0,210,255,0.1);
+  border-radius: 3px;
+  padding: 7px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  position: relative;
+  overflow: hidden;
+}
+.telem-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+  opacity: 0.3;
+}
+
+.tc-label {
+  font-size: 7px;
+  letter-spacing: 2px;
+  color: var(--text-dim);
+}
+.tc-value {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--cyan);
+  text-shadow: 0 0 12px rgba(0,210,255,0.4);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.tc-lat, .tc-lon { font-size: 12px; }
+.tc-alt  { color: var(--green); text-shadow: 0 0 12px rgba(0,255,157,0.4); }
+.tc-mag  { color: var(--purple); text-shadow: 0 0 12px rgba(187,136,255,0.4); }
+.tc-unit { font-size: 7px; letter-spacing: 1.5px; color: var(--text-dim); }
+
+.telem-ts {
+  font-size: 7px;
+  letter-spacing: 1.5px;
+  color: rgba(58,96,112,0.5);
+  text-align: center;
+  flex-shrink: 0;
+}
+
+
+/* ══════════════════════════════════════════════════════════════
+   ALTITUDE CHART
+   ══════════════════════════════════════════════════════════════ */
+.chart-section { flex: 1.0; }
+
+.chart-stats {
+  display: flex;
+  gap: 10px;
+  flex-shrink: 0;
+}
+.cs-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+  font-size: 8px;
+}
+.cs-item span { color: var(--text-dim); letter-spacing: 1.5px; }
+.cs-item b    { font-family: var(--font-display); font-size: 11px; color: var(--amber); }
+
+.chart-wrap {
+  flex: 1;
+  min-height: 0;
+}
+
+
+/* ══════════════════════════════════════════════════════════════
+   COMPASS
+   ══════════════════════════════════════════════════════════════ */
+.compass-section {
+  flex: 0.7;
+  align-items: center;
+}
+
+.compass-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  justify-content: center;
+}
+
+.compass-rose {
+  width: 90px; height: 90px;
+  position: relative;
+  border: 1.5px solid rgba(187,136,255,0.25);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.compass-card {
+  position: absolute;
+  font-size: 8px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: 0;
+}
+.compass-card-N { top: 2px;  left: 50%; transform: translateX(-50%); }
+.compass-card-E { right: 2px; top: 50%; transform: translateY(-50%); }
+.compass-card-S { bottom: 2px; left: 50%; transform: translateX(-50%); }
+.compass-card-W { left: 2px;  top: 50%; transform: translateY(-50%); }
+
+.compass-tick {
+  position: absolute;
+  top: 0; left: 50%;
+  width: 1px;
+  height: 5px;
+  background: rgba(187,136,255,0.2);
+  transform-origin: 50% 45px;
+}
+
+.compass-needle {
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 2px;
+  height: 60px;
+  transform-origin: 50% 50%;
+  translate: -50% -50%;
+  transition: transform 0.3s ease;
+}
+.needle-north {
+  width: 100%;
+  height: 50%;
+  background: var(--red);
+  border-radius: 1px 1px 0 0;
+}
+.needle-south {
+  width: 100%;
+  height: 50%;
+  background: rgba(255,255,255,0.3);
+  border-radius: 0 0 1px 1px;
+}
+.compass-centre {
+  position: absolute;
+  width: 8px; height: 8px;
+  background: var(--panel2);
+  border: 1.5px solid var(--purple);
+  border-radius: 50%;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+.compass-readout {
+  text-align: center;
+}
+.cr-heading {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 900;
+  color: var(--purple);
+  text-shadow: 0 0 15px rgba(187,136,255,0.5);
+  letter-spacing: 2px;
+}
+.cr-dir {
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: var(--text-dim);
+}
