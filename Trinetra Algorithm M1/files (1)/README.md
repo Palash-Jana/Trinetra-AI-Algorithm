@@ -110,7 +110,6 @@ HUD_H_FRAC   = 0.18   # HUD height fraction
 HFOV_DEG     = 70.0   # camera horizontal FOV (degrees)
 VFOV_DEG     = 50.0   # camera vertical FOV
 ```
-```bash
+
 # Creator👨‍💻: PALASH JANA
 # Creator GitHub🖇️: https://github.com/Palash-Jana
-```
